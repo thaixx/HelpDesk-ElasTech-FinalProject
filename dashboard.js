@@ -1,7 +1,13 @@
-const btn = document.getElementById('btnDataCriacao');
-const modal = document.getElementById('calendarModal');
-const closeBtn = document.getElementById('closeCalendar');
+const openCalendar = document.getElementById('btnDataVencimento');
+const closeCalendar = document.getElementById('closeCalendar');
 const monthInput = document.getElementById('monthSelect');
+const filterInput = document.getElementById('filter-Input');//search
+
+
+const statusFilter = document.getElementById('statusFilter');
+
+filterInput.addEventListener("input", filterCards);
+
 
 btn.addEventListener('click', () => {
   modal.style.display = modal.style.display === 'block' ? 'none' : 'block';
@@ -24,3 +30,59 @@ document.addEventListener('click', (e) => {
     modal.style.display = 'none';
   }
 });
+
+function renderCards(cardsToRender) {
+  container.innerHTML = cardsToRender.map(card => createCard(card)).join('');
+}
+
+function filterSearch(title, description, searchText) {
+  if (!searchText) return true;
+  return formatText(description).includes(searchText) || formatText(title).includes(searchText);
+}
+
+function filterPriority(cardPriority, filterValue) {
+  if (!filterValue) return true;
+  return cardPriority.toLowerCase() === filterValue.toLowerCase();
+}
+
+function filterStatus(cardStatus, filterValue) {
+  if (!filterValue) return true;
+  return cardStatus.toLowerCase() === filterValue.toLowerCase();
+}
+
+function filterCards() {
+  const searchText = formatText(searchInput.value);
+  const priority = priorityFilter.value;
+  const status = statusFilter.value;
+
+  filteredCards = cards.filter(card =>
+      filterSearch(card.title, card.description, searchText) &&
+      filterPriority(card.priority, priority) &&
+      filterStatus(card.status, status)
+  );
+
+  renderCards(filteredCards);
+}
+
+function handleAction(cardId, action) {
+  const card = cards.find(c => c.id === cardId);
+  if (!card) return;
+
+  switch (action) {
+      case "Finalizar":
+      case "Iniciar":
+      case "Reabrir":
+          card.status = getNextStatus(card.status);
+          filterCards();
+          break;
+      case "Ver Detalhes":
+          alert(`testandoooooooooo"`);
+          break;
+  }
+}
+
+function formatText(str) {
+  return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+}
+
+renderCards(filteredCards);
