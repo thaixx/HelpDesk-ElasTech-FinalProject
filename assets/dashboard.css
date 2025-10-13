@@ -1,119 +1,21 @@
-/* ======== GERAL ======== */
-body {
-    font-family: "Inter", sans-serif;
-    background: #f8f9fb;
-    margin: 0;
-    color: #1c1c1c;
-  }
-  
-  /* >> HEADER <<<*/
-  .topbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: white;
-    padding: 16px 8px;
-    box-shadow:0 2px 4px rgba(162, 161, 161, 0.5);
-    flex-wrap: wrap;
-  }
-  
-  .left-header {
-    display: flex;
-    align-items: center;
-    gap: 32px;
-  }
-  
-  /* Logo */
-  .logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  
-  .logo img {
-    width: 40px;
-    height: 40px;
-  }
-  /*nome do site*/
-  .logo h2 {
-    margin: 0;
-    font-size: 18px;
-  }
-  /*central de soluçoes*/
-  .logo p {
-    margin: 0;
-    font-size: 12px;
-    color: gray;
-  }
-  
-  /* botoes no header */
-  .nav-links {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  
-  .nav-links button {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    background: none;
-    border: none;
-    font-size: 16px;
-    padding: 6px 14px;
-    cursor: pointer;
-    border-radius: 8px;
-    transition: 0.2s;
-  }
-  
-  .nav-links button.active {
-    background: #37b3ec;
-    color: white;
-  }
-  
-  /* Usuário */
-  .user-info {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-  }
-  
-  .user-info p {
-    margin: 0;
-    font-size: 13px;
-    color: gray;
-  }
-  
-  .avatar {
-    width: 40px;
-    height: 40px;
-    background: #e6e6e6;
-    border-radius: 30%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  /* >>> body <<< */
   .dashboard-header {
     padding: 8px 16px;
-
   }
-  
+
   .dashboard-header h1 {
     font-weight: 700;
     font-style: Bold;
     font-size: 32px;
   }
-  
+
   .dashboard-header p {
     color: #666;
     font-weight: 400;
     font-style: Regular;
     font-size: 14px;
-  
+
   }
-  
+
   /* botão novo card */
   .add-card-container {
     display: flex;
@@ -122,7 +24,7 @@ body {
     padding: 0px 16px;
     margin-top: -3rem;
   }
-  
+
   .new-card {
     display: flex;
     align-items: center;
@@ -144,7 +46,7 @@ body {
     transform: translateY(-1px);
   }
 
-  
+
   /* CARDS DE RESUMO */
   .summary {
     display: flex;
@@ -153,7 +55,7 @@ body {
     padding:8px 16px;
     flex-wrap: wrap; /*quebra de linha*/
   }
-  
+
   .summary-card {
     position: relative;
     background: white;
@@ -187,23 +89,23 @@ body {
     right: 20px;
     opacity: 0.9;
   }
-  
+
   .card-icon svg {
     width: 20px;
     height: 20px;
   }
-  
+
   .summary-card:nth-child(1) .card-icon svg { color: #1668ff; }
   .summary-card:nth-child(2) .card-icon svg { color: #ff6a00; }
   .summary-card:nth-child(3) .card-icon svg { color: #00aaff; }
   .summary-card:nth-child(4) .card-icon svg { color: #4caf50; }
-  
+
   /* ======== FILTROS ======== */
   .filters {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
-    padding: 8px 16px; 
+    padding: 8px 16px;
     width: 100%;
     justify-content: flex-start;
     align-items: center;
@@ -219,9 +121,9 @@ body {
 
     flex-grow: 1;
     min-width: 250px;
-    width: auto;   
+    width: auto;
   }
-  
+
   /* Cada dropdown container */
   .dropdown {
     position: relative;
@@ -244,15 +146,15 @@ body {
     cursor: pointer;
     display: flex;
     align-items: center;
-    
+
   }
-  
+
   .dropbtn:hover,
   .calendar-btn:hover {
     background-color: #f8f8f8;
     border-color: #ccc;
   }
-  
+
   /* Ícone de seta nos botões */
   .dropbtn::after,
   .calendar-btn::after {
@@ -307,14 +209,14 @@ body {
     z-index: 1000;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   }
-  
+
   .calendar-modal input[type="month"] {
     padding: 6px;
     font-size: 14px;
     border: 1px solid #ccc;
     border-radius: 8px;
   }
-  
+
   .calendar-modal button {
     margin-top: 8px;
     background-color: #7b61ff;
@@ -324,7 +226,7 @@ body {
     border-radius: 6px;
     cursor: pointer;
   }
-  
+
   .calendar-modal button:hover {
     background-color: #6950e9;
   }
