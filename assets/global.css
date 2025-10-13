@@ -20,3 +20,11 @@ button {
   background: none;
 }
 
+input {
+    border: none;
+}
+
+select {
+    border: none;
+    cursor: pointer;
+}
