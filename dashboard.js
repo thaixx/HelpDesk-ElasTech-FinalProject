@@ -1,13 +1,30 @@
 const openCalendar = document.getElementById('btnDataVencimento');
 const closeCalendar = document.getElementById('closeCalendar');
 const monthInput = document.getElementById('monthSelect');
-const filterInput = document.getElementById('filter-Input');//search
-
+const filterInput = document.getElementById('.filter-Input');//search
+const dropdowns = document.querySelectorAll('.dropdown');
 
 const statusFilter = document.getElementById('statusFilter');
 
 filterInput.addEventListener("input", filterCards);
 
+dropdowns.forEach(dropdown => {
+  const button = dropdown.querySelector('.dropbtn');
+  button.addEventListener('click', (e) => {
+    e.stopPropagation();
+    // Fecha outros dropdowns
+    dropdowns.forEach(d => {
+      if (d !== dropdown) d.classList.remove('show');
+    });
+
+    dropdown.classList.toggle('show');
+  });
+});
+
+// Fecha dropdowns ao clicar fora
+document.addEventListener('click', () => {
+  dropdowns.forEach(d => d.classList.remove('show'));
+});
 
 btn.addEventListener('click', () => {
   modal.style.display = modal.style.display === 'block' ? 'none' : 'block';

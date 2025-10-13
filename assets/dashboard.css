@@ -177,6 +177,10 @@
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     z-index: 10;
     overflow: hidden;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    opacity: 0;
+    transform: translateY(5px);
+    pointer-events:visible;
   }
   
   .dropdown-content a {
@@ -194,7 +198,9 @@
   
   /* Mostrar dropdown ativo */
   .dropdown.show .dropdown-content {
-    display: block;
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: all;
   }
   
   /* Modal do calendário */
