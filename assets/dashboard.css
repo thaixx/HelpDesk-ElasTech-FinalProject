@@ -1,8 +1,15 @@
+  .dashboard{
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 40px 32px;
+  }
   .dashboard-header {
     padding: 8px 16px;
+    margin-bottom: 32px;
   }
 
   .dashboard-header h1 {
+    margin-bottom: 8px;
     font-weight: 700;
     font-style: Bold;
     font-size: 32px;
@@ -53,6 +60,7 @@
     align-items: stretch;
     gap: 32px;
     padding:8px 16px;
+    margin-top: 8px;
     flex-wrap: wrap; /*quebra de linha*/
   }
 
