@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help Desk - Meus Cards</title>
+</head>
+
+<body>
+<header class="topbar">
+    <div class="left-header">
+        <div class="logo">
+            <img src="../images/logo-suporte-on-line-50.png" alt="Help Desk"/>
+            <div>
+                <h2>Help Desk</h2>
+                <p>Central de soluções</p>
+            </div>
+        </div>
+
+        <nav class="nav-links">
+            <button class="active">
+                <i data-lucide="layout-dashboard"></i> Dashboard
+            </button>
+            <button>
+                <i data-lucide="folder"></i> Meus cards
+            </button>
+        </nav>
+    </div>
+
+    <div class="user-info">
+        <div>
+            <strong>Fernanda Tisco</strong>
+            <p>Gerente Tech</p>
+        </div>
+        <div class="user-avatar">
+            <i data-lucide="user"></i>
+        </div>
+    </div>
+</header>
+
+<main class="container">
+    <div class="page-header">
+        <h2>Meus Cards</h2>
+        <p>Gerencie e acompanhe todos os seus chamados</p>
+    </div>
+
+    <div class="filters">
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="Buscar card">
+        </div>
+        <select id="priorityFilter" class="filter-select">
+            <option value="">Todas Prioridades</option>
+            <option value="alta">Alta</option>
+            <option value="media">Média</option>
+            <option value="baixa">Baixa</option>
+        </select>
+        <select id="statusFilter" class="filter-select">
+            <option value="">Todos os Status</option>
+            <option value="em-andamento">Em andamento</option>
+            <option value="pendente">Pendente</option>
+            <option value="concluido">Concluído</option>
+        </select>
+    </div>
+
+    <div class="cards-grid" id="cardsGrid"></div>
+</main>
+</body>
+</html>
