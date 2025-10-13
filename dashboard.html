@@ -5,9 +5,10 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Help Desk - Dashboard</title>
-  <link rel="stylesheet" href="assets/dashboard.css"/>
-  <link rel="stylesheet" href="/assets/header-layout.css"/>
+
   <link rel="stylesheet" href="/assets/global.css"/>
+  <link rel="stylesheet" href="/assets/header-layout.css"/>
+  <link rel="stylesheet" href="assets/dashboard.css"/>
 
   <!-- import icons: -->
   <script src="https://unpkg.com/lucide@latest"></script>
@@ -26,13 +27,20 @@
     </div>
 
     <nav class="nav-links">
-      <!-- config by click -->
-      <button class="active">
-        <i data-lucide="layout-dashboard"></i> Dashboard
-      </button>
-      <button>
-        <i data-lucide="folder"></i> Meus cards
-      </button>
+      <ul>
+        <li>
+          <a class="active" href="dashboard.html">
+            <i data-lucide="layout-dashboard"></i>
+            Dashboard
+          </a>
+        </li>
+        <li>
+          <a href="myCards.html">
+            <i data-lucide="folder"></i>
+            Meus cards
+          </a>
+        </li>
+      </ul>
     </nav>
   </div>
 

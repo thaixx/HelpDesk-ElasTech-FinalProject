@@ -20,6 +20,14 @@ button {
   background: none;
 }
 
+ul {
+    display: flex;
+}
+
+li {
+    list-style: none;
+}
+
 input {
     border: none;
 }
