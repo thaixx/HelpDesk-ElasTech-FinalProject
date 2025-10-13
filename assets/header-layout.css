@@ -6,76 +6,103 @@
     padding: 16px 8px;
     box-shadow:0 2px 4px rgba(162, 161, 161, 0.5);
     flex-wrap: wrap;
-  }
+}
 
-  .left-header {
+.left-header {
     display: flex;
     align-items: center;
     gap: 32px;
-  }
+}
 
-  /* Logo */
-  .logo {
+.logo {
     display: flex;
     align-items: center;
     gap: 10px;
-  }
+}
 
-  .logo img {
+.logo img {
     width: 40px;
     height: 40px;
-  }
-  /*nome do site*/
-  .logo h2 {
+}
+
+.logo h2 {
     margin: 0;
     font-size: 18px;
-  }
-  /*central de soluçoes*/
-  .logo p {
+}
+
+.logo p {
     margin: 0;
     font-size: 12px;
     color: gray;
-  }
+}
 
-  /* botoes no header */
-  .nav-links {
+[data-lucide="layout-dashboard"] {
+     width: 14px;
+     height: 14px;
+     color: #007bff;
+     flex-shrink: 0;
+}
+
+[data-lucide="folder"] {
+    width: 20px;
+    height: 17px;
+    color: #007bff;
+    flex-shrink: 0;
+}
+
+.nav-links {
     display: flex;
     align-items: center;
     gap: 10px;
-  }
+}
 
-  .nav-links button {
+.nav-links a.active {
+    background: #37b3ec;
+    color: white;
+    padding: 7px 40px;
+    border-radius: 10px;
+}
+
+.nav-links a.active [data-lucide] {
+    color: white;
+}
+
+.nav-links li {
     display: flex;
     align-items: center;
-    gap: 6px;
+    justify-content: center;
     background: none;
-    border: none;
     font-size: 16px;
     padding: 6px 14px;
     cursor: pointer;
     border-radius: 8px;
     transition: 0.2s;
-  }
+}
 
-  .nav-links button.active {
-    background: #37b3ec;
-    color: white;
-  }
+.nav-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap:6px;
+    padding: 7px 20px;
+    font-size: 16px;
+    font-weight: 500;
+    color: black;
+}
 
-  /* Usuário */
-  .user-info {
+.user-info {
     display: flex;
     align-items: center;
     gap: 16px;
-  }
+}
 
-  .user-info p {
+.user-info p {
     margin: 0;
     font-size: 13px;
     color: gray;
-  }
+}
 
-  .avatar {
+.avatar {
     width: 40px;
     height: 40px;
     background: #e6e6e6;
@@ -83,4 +110,4 @@
     display: flex;
     align-items: center;
     justify-content: center;
-  }
+}

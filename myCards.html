@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="/assets/mycards.css"/>
 
   <script src="js/page-mycards.js" defer></script>
-
+  <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 
 <body>
@@ -25,12 +25,20 @@
     </div>
 
     <nav class="nav-links">
-      <button class="active">
-        <i data-lucide="layout-dashboard"></i> Dashboard
-      </button>
-      <button>
-        <i data-lucide="folder"></i> Meus cards
-      </button>
+      <ul>
+        <li>
+          <a href="dashboard.html">
+            <i data-lucide="layout-dashboard"></i>
+            Dashboard
+          </a>
+        </li>
+        <li>
+          <a class="active" href="myCards.html">
+            <i data-lucide="folder"></i>
+            Meus cards
+          </a>
+        </li>
+      </ul>
     </nav>
   </div>
 
@@ -39,7 +47,7 @@
       <strong>Fernanda Tisco</strong>
       <p>Gerente Tech</p>
     </div>
-    <div class="user-avatar">
+    <div class="avatar">
       <i data-lucide="user"></i>
     </div>
   </div>
@@ -53,6 +61,7 @@
 
   <div class="filters">
     <div class="search-box">
+      <i class="search-icon" data-lucide="search"></i>
       <input type="text" id="searchInput" placeholder="Buscar card">
     </div>
     <select id="priorityFilter" class="filter-select">
@@ -72,5 +81,9 @@
   <div class="cards-grid" id="cardsGrid">
   </div>
 </main>
+
+<script>
+  lucide.createIcons();
+</script>
 </body>
 </html>
