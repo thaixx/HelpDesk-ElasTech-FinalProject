@@ -1,119 +1,21 @@
-/* ======== GERAL ======== */
-body {
-    font-family: "Inter", sans-serif;
-    background: #f8f9fb;
-    margin: 0;
-    color: #1c1c1c;
-  }
-  
-  /* >> HEADER <<<*/
-  .topbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: white;
-    padding: 16px 8px;
-    box-shadow:0 2px 4px rgba(162, 161, 161, 0.5);
-    flex-wrap: wrap;
-  }
-  
-  .left-header {
-    display: flex;
-    align-items: center;
-    gap: 32px;
-  }
-  
-  /* Logo */
-  .logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  
-  .logo img {
-    width: 40px;
-    height: 40px;
-  }
-  /*nome do site*/
-  .logo h2 {
-    margin: 0;
-    font-size: 18px;
-  }
-  /*central de soluçoes*/
-  .logo p {
-    margin: 0;
-    font-size: 12px;
-    color: gray;
-  }
-  
-  /* botoes no header */
-  .nav-links {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  
-  .nav-links button {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    background: none;
-    border: none;
-    font-size: 16px;
-    padding: 6px 14px;
-    cursor: pointer;
-    border-radius: 8px;
-    transition: 0.2s;
-  }
-  
-  .nav-links button.active {
-    background: #37b3ec;
-    color: white;
-  }
-  
-  /* Usuário */
-  .user-info {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-  }
-  
-  .user-info p {
-    margin: 0;
-    font-size: 13px;
-    color: gray;
-  }
-  
-  .avatar {
-    width: 40px;
-    height: 40px;
-    background: #e6e6e6;
-    border-radius: 30%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  /* >>> body <<< */
   .dashboard-header {
     padding: 8px 16px;
-
   }
-  
+
   .dashboard-header h1 {
     font-weight: 700;
     font-style: Bold;
     font-size: 32px;
   }
-  
+
   .dashboard-header p {
     color: #666;
     font-weight: 400;
     font-style: Regular;
     font-size: 14px;
-  
+
   }
-  
+
   /* botão novo card */
   .add-card-container {
     display: flex;
@@ -122,7 +24,7 @@ body {
     padding: 0px 16px;
     margin-top: -3rem;
   }
-  
+
   .new-card {
     display: flex;
     align-items: center;
@@ -144,7 +46,7 @@ body {
     transform: translateY(-1px);
   }
 
-  
+
   /* CARDS DE RESUMO */
   .summary {
     display: flex;
@@ -153,7 +55,7 @@ body {
     padding:8px 16px;
     flex-wrap: wrap; /*quebra de linha*/
   }
-  
+
   .summary-card {
     position: relative;
     background: white;
@@ -187,17 +89,17 @@ body {
     right: 20px;
     opacity: 0.9;
   }
-  
+
   .card-icon svg {
     width: 20px;
     height: 20px;
   }
-  
+
   .summary-card:nth-child(1) .card-icon svg { color: #1668ff; }
   .summary-card:nth-child(2) .card-icon svg { color: #ff6a00; }
   .summary-card:nth-child(3) .card-icon svg { color: #00aaff; }
   .summary-card:nth-child(4) .card-icon svg { color: #4caf50; }
-  
+
   /* ======== FILTROS ======== */
   .filters {
     display: flex;
@@ -207,7 +109,7 @@ body {
     justify-content: space-between;
     align-items: center;
   }
-  
+
   .filters input {
     flex: 1;
     padding: 12px;
@@ -220,7 +122,7 @@ body {
     position: relative;
     flex: 1;
   }
-  
+
   /* Botão principal do dropdown */
   .dropbtn {
     width: 100%;
@@ -237,7 +139,7 @@ body {
     background-color: #f0f0f0;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
   }
-  
+
   /* Conteúdo do dropdown */
   .dropdown-content {
     display: none;
@@ -251,7 +153,7 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     z-index: 10;
   }
-  
+
   .dropdown-content a {
     display: block;
     padding: 10px 14px;
@@ -260,16 +162,16 @@ body {
     text-decoration: none;
     transition: background-color 0.2s;
   }
-  
+
   .dropdown-content a:hover {
     background-color: #f5f5f5;
   }
-  
+
   /* Mostra o dropdown quando ativo */
   .dropdown.show .dropdown-content {
     display: block;
   }
-  
+
   .date-filter {
     display: flex;
     flex-direction: column;
@@ -277,13 +179,13 @@ body {
     color: #333;
     flex: 1;
   }
-  
+
   .date-range {
     display: flex;
     align-items: center;
     gap: 6px;
   }
-  
+
   .date-range input {
     flex: 1;
     padding: 0.6rem;
@@ -291,8 +193,8 @@ body {
     border-radius: 8px;
     font-size: 14px;
   }
-  
-  
+
+
   /* ======== TABELA ======== */
   .table-section {
     background: white;
@@ -301,28 +203,28 @@ body {
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
     overflow-x: auto;
   }
-  
+
   table {
     width: 100%;
     border-collapse: collapse;
     min-width: 800px;
   }
-  
+
   thead {
     background: #f3f4f6;
   }
-  
+
   th, td {
     text-align: left;
     padding: 8px 16px;
     border-bottom: 1px solid #eee;
     white-space: nowrap;
   }
-  
+
   tbody tr:hover {
     background: #f9fafb;
   }
-  
+
   /* Tags */
   .tag {
     padding: 4px 10px;
@@ -332,11 +234,11 @@ body {
     color: white;
     display: inline-block;
   }
-  
+
   .tag.bug { background: #ff4d4f; }
   .tag.alta { background: #ff7a45; }
   .tag.andamento { background: #69c0ff; }
-  
+
   /* ======== PAGINAÇÃO ======== */
   .pagination {
     display: flex;
@@ -348,7 +250,7 @@ body {
     flex-wrap: wrap;
     gap: 1rem;
   }
-  
+
   .pagination button {
     background: white;
     border: 1px solid #ddd;
@@ -356,16 +258,15 @@ body {
     padding: 4px 10px;
     cursor: pointer;
   }
-  
+
   /* ======== RESPONSIVIDADE ======== */
   @media (max-width: 1024px) {
     .filters input, .filters select { flex: 1 1 45%; }
   }
-  
+
   @media (max-width: 768px) {
     .filters input, .filters select { flex: 1 1 100%; }
     .summary { flex-direction: column; }
     .add-card-container { justify-content: center; }
     .table-section { margin: 1rem; }
   }
-  

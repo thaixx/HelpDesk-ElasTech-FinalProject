@@ -2,194 +2,197 @@
 <html lang="pt-BR">
 <!-- inicial configs -->
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Help Desk - Dashboard</title>
-  <link rel="stylesheet" href="dashboard.css" />
+  <link rel="stylesheet" href="assets/dashboard.css"/>
+  <link rel="stylesheet" href="/assets/header-layout.css"/>
+  <link rel="stylesheet" href="/assets/global.css"/>
+
   <!-- import icons: -->
   <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 
 <body>
-  <!-- HEADER -->
-  <header class="topbar">
-    <div class="left-header">
-      <div class="logo">
-        <img src="../projeto-final/images/logo-suporte-on-line-50.png" alt="Help Desk" />
-        <div>
-          <h2>Help Desk</h2>
-          <p>Central de soluções</p>
-        </div>
-      </div>
-
-      <nav class="nav-links">
-        <!-- config by click -->
-        <button class="active"> 
-          <i data-lucide="layout-dashboard"></i> Dashboard
-        </button>
-        <button >
-          <i data-lucide="folder"></i> Meus cards
-        </button>
-      </nav>
-    </div>
-
-    <div class="user-info">
+<!-- HEADER -->
+<header class="top-bar">
+  <div class="left-header">
+    <div class="logo">
+      <img src="/images/logo-suporte-on-line-50.png" alt="Help Desk"/>
       <div>
-        <strong>Fernanda Tisco</strong>
-        <p>Gerente Tech</p>
-      </div>
-      <div class="avatar">
-        <i data-lucide="user"></i>
+        <h2>Help Desk</h2>
+        <p>Central de soluções</p>
       </div>
     </div>
-  </header>
 
-  <!-- BODY -->
-  <main class="dashboard">
-    <div class="dashboard-header">
-      <h1>Dashboard</h1>
-      <p>Gerencie todos os seus cards em um só lugar</p>
+    <nav class="nav-links">
+      <!-- config by click -->
+      <button class="active">
+        <i data-lucide="layout-dashboard"></i> Dashboard
+      </button>
+      <button>
+        <i data-lucide="folder"></i> Meus cards
+      </button>
+    </nav>
+  </div>
+
+  <div class="user-info">
+    <div>
+      <strong>Fernanda Tisco</strong>
+      <p>Gerente Tech</p>
     </div>
+    <div class="avatar">
+      <i data-lucide="user"></i>
+    </div>
+  </div>
+</header>
 
-    <!-- Botão Novo Card -->
-    <div class="add-card-container">
-      <button class="new-card">
-        <i data-lucide="plus"></i> Novo card
+<!-- BODY -->
+<main class="dashboard">
+  <div class="dashboard-header">
+    <h1>Dashboard</h1>
+    <p>Gerencie todos os seus cards em um só lugar</p>
+  </div>
+
+  <!-- Botão Novo Card -->
+  <div class="add-card-container">
+    <button class="new-card">
+      <i data-lucide="plus"></i> Novo card
     </button>
+  </div>
+
+  <!-- Cards de resumo -->
+  <section class="summary">
+    <div class="summary-card">
+      <div class="card-icon"><i data-lucide="wallet-cards"></i></div>
+      <h3>Total de Cards</h3>
+      <span>53</span>
+    </div>
+    <div class="summary-card">
+      <div class="card-icon"><i data-lucide="clock"></i></div>
+      <h3>Pendentes</h3>
+      <span>16</span>
+    </div>
+    <div class="summary-card">
+      <div class="card-icon"><i data-lucide="refresh-ccw"></i></div>
+      <h3>Em Andamento</h3>
+      <span>8</span>
+    </div>
+    <div class="summary-card">
+      <div class="card-icon"><i data-lucide="check-circle"></i></div>
+      <h3>Concluídos</h3>
+      <span>29</span>
+    </div>
+  </section>
+
+  <!-- Filtros -->
+  <section class="filters">
+    <input type="text" placeholder="Buscar card"/>
+
+    <div class="dropdown">
+      <button class="dropbtn">Todas Categorias</button>
+      <div class="dropdown-content">
+        <a href="#">Bug</a>
+        <a href="#">Melhoria</a>
+        <a href="#">Suporte</a>
+        <a href="#">Dúvida</a>
+      </div>
     </div>
 
-    <!-- Cards de resumo -->
-    <section class="summary">
-      <div class="summary-card">
-        <div class="card-icon"><i data-lucide="wallet-cards"></i></div>
-        <h3>Total de Cards</h3>
-        <span>53</span>
+    <div class="dropdown">
+      <button class="dropbtn">Todas Prioridades</button>
+      <div class="dropdown-content">
+        <a href="#">Alta</a>
+        <a href="#">Média</a>
+        <a href="#">Baixa</a>
       </div>
-      <div class="summary-card">
-        <div class="card-icon"><i data-lucide="clock"></i></div>
-        <h3>Pendentes</h3>
-        <span>16</span>
+    </div>
+
+    <div class="dropdown">
+      <button class="dropbtn">Todos os Status</button>
+      <div class="dropdown-content">
+        <a href="#">Em andamento</a>
+        <a href="#">Pendente</a>
+        <a href="#">Concluído</a>
       </div>
-      <div class="summary-card">
-        <div class="card-icon"><i data-lucide="refresh-ccw"></i></div>
-        <h3>Em Andamento</h3>
-        <span>8</span>
+    </div>
+
+    <div class="dropdown">
+      <button class="dropbtn"> Responsável</button>
+
+
+    </div>
+
+    <div class="date-filter">
+      <label>Data de criação:</label>
+      <div class="date-range">
+        <input type="date" id="dataInicio"/>
+        <span>—</span>
+        <input type="date" id="dataFim"/>
       </div>
-      <div class="summary-card">
-        <div class="card-icon"><i data-lucide="check-circle"></i></div>
-        <h3>Concluídos</h3>
-        <span>29</span>
+    </div>
+
+    <div class="due-date-filter">
+      <label>Vencimento:</label>
+      <div class="date-range">
+        <input type="date" id="dataInicio"/>
+        <span>—</span>
+        <input type="date" id="dataFim"/>
       </div>
-    </section>
-
-    <!-- Filtros -->
-    <section class="filters">
-        <input type="text" placeholder="Buscar card" />
-      
-        <div class="dropdown">
-          <button class="dropbtn">Todas Categorias</button>
-          <div class="dropdown-content">
-            <a href="#">Bug</a>
-            <a href="#">Melhoria</a>
-            <a href="#">Suporte</a>
-            <a href="#">Dúvida</a>
-          </div>
-        </div>
-      
-        <div class="dropdown">
-          <button class="dropbtn">Todas Prioridades</button>
-          <div class="dropdown-content">
-            <a href="#">Alta</a>
-            <a href="#">Média</a>
-            <a href="#">Baixa</a>
-          </div>
-        </div>
-      
-        <div class="dropdown">
-          <button class="dropbtn">Todos os Status</button>
-          <div class="dropdown-content">
-            <a href="#">Em andamento</a>
-            <a href="#">Pendente</a>
-            <a href="#">Concluído</a>
-          </div>
-        </div>
-
-        <div class="dropdown">
-            <button class="dropbtn"> Responsável </button>
-            
-
-        </div>
-
-        <div class="date-filter">
-            <label>Data de criação:</label>
-            <div class="date-range">
-              <input type="date" id="dataInicio" />
-              <span>—</span>
-              <input type="date" id="dataFim" />
-            </div>
-        </div>
-          
-        <div class="due-date-filter">
-            <label>Vencimento:</label>
-            <div class="date-range">
-              <input type="date" id="dataInicio" />
-              <span>—</span>
-              <input type="date" id="dataFim" />
-            </div>
-        </div>
+    </div>
 
 
-    </section>
+  </section>
 
-    <!-- Tabela -->
-    <section class="table-section">
-      <table>
-        <thead>
-          <tr>
-            <th>Cards</th>
-            <th>Categoria</th>
-            <th>Prioridade</th>
-            <th>Status</th>
-            <th>Responsável</th>
-            <th>Criado em</th>
-            <th>Vencimento</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-              <strong>Login não está funcionando</strong>
-              <p>Usuário relata erro ao tentar fazer login no sistema...</p>
-            </td>
-            <td><span class="tag bug">Bug</span></td>
-            <td><span class="tag alta">Alta</span></td>
-            <td><span class="tag andamento">Em andamento</span></td>
-            <td>Larissa Faria</td>
-            <td>11/10/2025</td>
-            <td>15/10/2025</td>
-          </tr>
-        </tbody>
-      </table>
+  <!-- Tabela -->
+  <section class="table-section">
+    <table>
+      <thead>
+      <tr>
+        <th>Cards</th>
+        <th>Categoria</th>
+        <th>Prioridade</th>
+        <th>Status</th>
+        <th>Responsável</th>
+        <th>Criado em</th>
+        <th>Vencimento</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>
+          <strong>Login não está funcionando</strong>
+          <p>Usuário relata erro ao tentar fazer login no sistema...</p>
+        </td>
+        <td><span class="tag bug">Bug</span></td>
+        <td><span class="tag alta">Alta</span></td>
+        <td><span class="tag andamento">Em andamento</span></td>
+        <td>Larissa Faria</td>
+        <td>11/10/2025</td>
+        <td>15/10/2025</td>
+      </tr>
+      </tbody>
+    </table>
 
-      <div class="pagination">
-        <p>Mostrando 1 até 7 de 53 cards</p>
-        <label>Itens por página:
-          <select>
-            <option>7</option>
-            <option>10</option>
-          </select>
-        </label>
-        <div>
-          <button>◀ Anterior</button>
-          <span>1</span>
-          <button>Próximo ▶</button>
-        </div>
+    <div class="pagination">
+      <p>Mostrando 1 até 7 de 53 cards</p>
+      <label>Itens por página:
+        <select>
+          <option>7</option>
+          <option>10</option>
+        </select>
+      </label>
+      <div>
+        <button>◀ Anterior</button>
+        <span>1</span>
+        <button>Próximo ▶</button>
       </div>
-    </section>
-  </main>
+    </div>
+  </section>
+</main>
 
-  <script>
-    lucide.createIcons();
-  </script>
+<script>
+  lucide.createIcons();
+</script>
 </body>
 </html>
