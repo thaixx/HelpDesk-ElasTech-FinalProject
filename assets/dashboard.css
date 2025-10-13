@@ -105,126 +105,163 @@
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
-    padding:8px 16px;
-    justify-content: space-between;
+    padding: 8px 16px;
+    width: 100%;
+    justify-content: flex-start;
     align-items: center;
+    box-sizing: border-box;
   }
-
-  .filters input {
-    flex: 1;
-    padding: 12px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
+  
+  /* Input de busca */
+  .filter-input {
+    padding: 10px  14px ;
+    border: 1.5px solid #ddd;
+    border-radius: 10px;
     font-size: 14px;
+
+    flex-grow: 1;
+    min-width: 250px;
+    width: auto;
   }
 
+  /* Cada dropdown container */
   .dropdown {
     position: relative;
-    flex: 1;
+    flex-grow: 0;
+    flex-shrink: 0;
+    min-width: 150px;
+    width: auto;
   }
-
-  /* Botão principal do dropdown */
-  .dropbtn {
-    width: 100%;
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 0.6rem;
+  
+  /* Botão principal dos filtros */
+  .dropbtn,
+  .calendar-btn {
+    background-color: #fff;
+    border: 1.5px solid #ddd;
+    border-radius: 10px;
+    padding: 8px 16px;
     font-size: 14px;
+    color: #333;
     text-align: left;
     cursor: pointer;
-    transition: background-color 0.2s ease, box-shadow 0.2s ease;
-  }
-  .dropbtn:hover {
-    background-color: #f0f0f0;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    display: flex;
+    align-items: center;
+
   }
 
-  /* Conteúdo do dropdown */
+  .dropbtn:hover,
+  .calendar-btn:hover {
+    background-color: #f8f8f8;
+    border-color: #ccc;
+  }
+
+  /* Ícone de seta nos botões */
+  .dropbtn::after,
+  .calendar-btn::after {
+    content: "▾";
+    font-size: 12px;
+    color: #555;
+    margin-left: 8px;
+  }
+  
+  /* Dropdown interno */
   .dropdown-content {
     display: none;
     position: absolute;
-    top: 110%;
+    top: 105%;
     left: 0;
     width: 100%;
     background-color: #fff;
     border: 1px solid #ddd;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     z-index: 10;
+    overflow: hidden;
   }
-
+  
   .dropdown-content a {
     display: block;
     padding: 10px 14px;
     font-size: 14px;
     color: #333;
     text-decoration: none;
-    transition: background-color 0.2s;
+    transition: background-color 0.2s ease;
   }
-
+  
   .dropdown-content a:hover {
     background-color: #f5f5f5;
   }
-
-  /* Mostra o dropdown quando ativo */
+  
+  /* Mostrar dropdown ativo */
   .dropdown.show .dropdown-content {
     display: block;
   }
-
-  .date-filter {
-    display: flex;
-    flex-direction: column;
-    font-size: 14px;
-    color: #333;
-    flex: 1;
-  }
-
-  .date-range {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
-
-  .date-range input {
-    flex: 1;
-    padding: 0.6rem;
+  
+  /* Modal do calendário */
+  .calendar-modal {
+    display: none;
+    position: absolute;
+    background-color: #fff;
     border: 1px solid #ddd;
-    border-radius: 8px;
-    font-size: 14px;
+    border-radius: 10px;
+    padding: 12px;
+    top: 45px;
+    z-index: 1000;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   }
 
+  .calendar-modal input[type="month"] {
+    padding: 6px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+  }
 
+  .calendar-modal button {
+    margin-top: 8px;
+    background-color: #7b61ff;
+    color: #fff;
+    border: none;
+    padding: 6px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+
+  .calendar-modal button:hover {
+    background-color: #6950e9;
+  }
+  
+  
   /* ======== TABELA ======== */
   .table-section {
     background: white;
-    margin: 1rem 2rem;
+    margin: 8px;
     border-radius: 10px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
     overflow-x: auto;
   }
-
+  
   table {
     width: 100%;
     border-collapse: collapse;
     min-width: 800px;
   }
-
+  
   thead {
     background: #f3f4f6;
   }
-
+  
   th, td {
     text-align: left;
     padding: 8px 16px;
     border-bottom: 1px solid #eee;
     white-space: nowrap;
   }
-
+  
   tbody tr:hover {
     background: #f9fafb;
   }
-
+  
   /* Tags */
   .tag {
     padding: 4px 10px;
@@ -234,11 +271,11 @@
     color: white;
     display: inline-block;
   }
-
+  
   .tag.bug { background: #ff4d4f; }
   .tag.alta { background: #ff7a45; }
   .tag.andamento { background: #69c0ff; }
-
+  
   /* ======== PAGINAÇÃO ======== */
   .pagination {
     display: flex;
@@ -250,7 +287,7 @@
     flex-wrap: wrap;
     gap: 1rem;
   }
-
+  
   .pagination button {
     background: white;
     border: 1px solid #ddd;
@@ -258,15 +295,16 @@
     padding: 4px 10px;
     cursor: pointer;
   }
-
+  
   /* ======== RESPONSIVIDADE ======== */
   @media (max-width: 1024px) {
     .filters input, .filters select { flex: 1 1 45%; }
   }
-
+  
   @media (max-width: 768px) {
     .filters input, .filters select { flex: 1 1 100%; }
     .summary { flex-direction: column; }
     .add-card-container { justify-content: center; }
     .table-section { margin: 1rem; }
   }
+  

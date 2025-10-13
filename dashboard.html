@@ -85,114 +85,113 @@
     </div>
   </section>
 
-  <!-- Filtros -->
-  <section class="filters">
-    <input type="text" placeholder="Buscar card"/>
+    <!-- Filtros -->
+    <section class="filters">
+        <input type="text" class="filter-input" placeholder="Buscar card" />
+      
+        <div class="dropdown">
+          <button class="dropbtn">Todas Categorias</button>
+          <div class="dropdown-content">
+            <a href="#">Bug</a>
+            <a href="#">Melhoria</a>
+            <a href="#">Suporte</a>
+            <a href="#">Dúvida</a>
+          </div>
+        </div>
+      
+        <div class="dropdown">
+          <button class="dropbtn">Todas Prioridades</button>
+          <div class="dropdown-content">
+            <a href="#">Alta</a>
+            <a href="#">Média</a>
+            <a href="#">Baixa</a>
+          </div>
+        </div>
+      
+        <div class="dropdown">
+          <button class="dropbtn">Todos os Status</button>
+          <div class="dropdown-content">
+            <a href="#">Em andamento</a>
+            <a href="#">Pendente</a>
+            <a href="#">Concluído</a>
+          </div>
+        </div>
 
-    <div class="dropdown">
-      <button class="dropbtn">Todas Categorias</button>
-      <div class="dropdown-content">
-        <a href="#">Bug</a>
-        <a href="#">Melhoria</a>
-        <a href="#">Suporte</a>
-        <a href="#">Dúvida</a>
+        <div class="dropdown">
+            <button class="dropbtn"> Responsável </button>
+        </div>
+
+        <!-- Botão que abre o calendário -->
+        <button id="btnDataCriacao" class="calendar-btn">Data de criação</button>
+
+        <!-- Calendário (inicialmente oculto) -->
+        <div id="calendarModal" class="calendar-modal">
+          <label for="monthSelect">Selecione o mês:</label>
+          <input type="month" id="monthSelect">
+          <button id="closeCalendar">OK</button>
+        </div>
+
+         <!-- Botão que abre o calendário -->
+        <button id="btnDataVencimento" class="calendar-btn"> Data de vencimento</button>
+
+        <!-- Calendário (inicialmente oculto) -->
+        <div id="calendarModal" class="calendar-modal">
+          <label for="monthSelect">Selecione o mês:</label>
+          <input type="month" id="monthSelect">
+          <button id="closeCalendar">OK</button>
+        </div>
+
+    </section>
+
+    <!-- Tabela -->
+    <section class="table-section">
+      <table>
+        <thead>
+          <tr>
+            <th>Cards</th>
+            <th>Categoria</th>
+            <th>Prioridade</th>
+            <th>Status</th>
+            <th>Responsável</th>
+            <th>Criado em</th>
+            <th>Vencimento</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <strong>Login não está funcionando</strong>
+              <p>Usuário relata erro ao tentar fazer login no sistema...</p>
+            </td>
+            <td><span class="tag bug">Bug</span></td>
+            <td><span class="tag alta">Alta</span></td>
+            <td><span class="tag andamento">Em andamento</span></td>
+            <td>Larissa Faria</td>
+            <td>11/10/2025</td>
+            <td>15/10/2025</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="pagination">
+        <p>Mostrando 1 até 7 de 53 cards</p>
+        <label>Itens por página:
+          <select>
+            <option>7</option>
+            <option>10</option>
+          </select>
+        </label>
+        <div>
+          <button>◀ Anterior</button>
+          <span>1</span>
+          <button>Próximo ▶</button>
+        </div>
       </div>
-    </div>
+    </section>
+  </main>
 
-    <div class="dropdown">
-      <button class="dropbtn">Todas Prioridades</button>
-      <div class="dropdown-content">
-        <a href="#">Alta</a>
-        <a href="#">Média</a>
-        <a href="#">Baixa</a>
-      </div>
-    </div>
-
-    <div class="dropdown">
-      <button class="dropbtn">Todos os Status</button>
-      <div class="dropdown-content">
-        <a href="#">Em andamento</a>
-        <a href="#">Pendente</a>
-        <a href="#">Concluído</a>
-      </div>
-    </div>
-
-    <div class="dropdown">
-      <button class="dropbtn"> Responsável</button>
-
-
-    </div>
-
-    <div class="date-filter">
-      <label>Data de criação:</label>
-      <div class="date-range">
-        <input type="date" id="dataInicio"/>
-        <span>—</span>
-        <input type="date" id="dataFim"/>
-      </div>
-    </div>
-
-    <div class="due-date-filter">
-      <label>Vencimento:</label>
-      <div class="date-range">
-        <input type="date" id="dataInicio"/>
-        <span>—</span>
-        <input type="date" id="dataFim"/>
-      </div>
-    </div>
-
-
-  </section>
-
-  <!-- Tabela -->
-  <section class="table-section">
-    <table>
-      <thead>
-      <tr>
-        <th>Cards</th>
-        <th>Categoria</th>
-        <th>Prioridade</th>
-        <th>Status</th>
-        <th>Responsável</th>
-        <th>Criado em</th>
-        <th>Vencimento</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr>
-        <td>
-          <strong>Login não está funcionando</strong>
-          <p>Usuário relata erro ao tentar fazer login no sistema...</p>
-        </td>
-        <td><span class="tag bug">Bug</span></td>
-        <td><span class="tag alta">Alta</span></td>
-        <td><span class="tag andamento">Em andamento</span></td>
-        <td>Larissa Faria</td>
-        <td>11/10/2025</td>
-        <td>15/10/2025</td>
-      </tr>
-      </tbody>
-    </table>
-
-    <div class="pagination">
-      <p>Mostrando 1 até 7 de 53 cards</p>
-      <label>Itens por página:
-        <select>
-          <option>7</option>
-          <option>10</option>
-        </select>
-      </label>
-      <div>
-        <button>◀ Anterior</button>
-        <span>1</span>
-        <button>Próximo ▶</button>
-      </div>
-    </div>
-  </section>
-</main>
-
-<script>
-  lucide.createIcons();
-</script>
+  <script>
+    lucide.createIcons();
+  </script>
 </body>
 </html>
