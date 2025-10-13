@@ -3,58 +3,80 @@ const priorityFilter = document.getElementById('priorityFilter');
 const statusFilter = document.getElementById('statusFilter');
 const container = document.getElementById('cardsGrid');
 
-searchInput.addEventListener("input", filterCards)
+searchInput.addEventListener("input", filterCards);
 priorityFilter.addEventListener('change', filterCards);
 statusFilter.addEventListener('change', filterCards);
-
 
 const cards = [
     {
         id: 1,
-        status: 'Em andamento',
+        status: 'andamento',
         priority: 'Alta',
         title: 'Erro no sistema de login',
         description: 'Usuários não conseguem fazer login após atualização. Esse erro...',
         category: 'Bug',
         createdAt: '10/01/2025, 10:30',
         dueDate: '10/02/2025, 10:30',
-        actions: ['Ver Detalhes', 'Finalizar']
     },
     {
         id: 2,
-        status: 'Pendente',
+        status: 'pendente',
         priority: 'Média',
         title: 'Melhorar performance do dashboard',
         description: 'Dashboard está lento ao carregar muitos dados. Necessário...',
         category: 'Melhoria',
         createdAt: '10/01/2025, 10:30',
         dueDate: '10/06/2025, 10:30',
-        actions: ['Ver Detalhes', 'Iniciar']
     },
     {
         id: 5,
-        status: 'Concluido',
+        status: 'concluido',
         priority: 'Baixa',
         title: 'Criar paginação da tabela de dashboard',
         description: 'Muitos dados estão sendo trazidos e deixando a página com...',
         category: 'Melhoria',
         createdAt: '10/01/2025, 10:30',
         dueDate: '10/06/2025, 10:30',
-        actions: ['Ver Detalhes', 'Reabrir']
     }
 ];
 
 let filteredCards = [...cards];
+
+function getStatusText(status) {
+    const statusMap = {
+        pendente: "Pendente",
+        andamento: "Em andamento",
+        concluido: "Concluído",
+    };
+    return statusMap[status];
+}
+
+function getNextStatus(currentStatus) {
+    const statusFlow = {
+        pendente: 'andamento',
+        andamento: 'concluido',
+        concluido: 'pendente'
+    };
+    return statusFlow[currentStatus];
+}
+
 function createCard(card) {
     const statusClass = card.status.toLowerCase().replace(' ', '-');
     const priorityClass = card.priority.toLowerCase();
 
+    const actionTextMap = {
+        pendente: 'Iniciar',
+        andamento: 'Finalizar',
+        concluido: 'Reabrir'
+    };
+
+    const actionButtonClass = card.status === 'concluido' ? 'btn btn-outline' : 'btn btn-primary';
     return `
         <div class="card" data-id="${card.id}">
             <div class="card-header">
                 <div class="status-badge">
                     <span class="status-icon ${statusClass}"></span>
-                    ${card.status}
+                    ${getStatusText(card.status)}
                 </div>
                 <span class="priority-badge ${priorityClass}">${card.priority}</span>
             </div>
@@ -81,70 +103,66 @@ function createCard(card) {
                 <button class="btn btn-outline" onclick="handleAction(${card.id}, 'Ver Detalhes')">
                     Ver Detalhes
                 </button>
-                <button class="btn btn-primary" onclick="handleAction(${card.id}, 'Finalizar')">
-                    Finalizar
+                <button class="${actionButtonClass}" onclick="handleAction(${card.id}, '${actionTextMap[card.status]}')">
+                    ${actionTextMap[card.status]}
                 </button>
             </div>
         </div>
     `;
 }
 
-function renderCards(cards) {
-    container.innerHTML = cards.map(card => createCard(card)).join('');
+function renderCards(cardsToRender) {
+    container.innerHTML = cardsToRender.map(card => createCard(card)).join('');
 }
 
 function filterSearch(title, description, searchText) {
-  if (!searchText) return true;
-
-  return formatText(description).includes(searchText) || formatText(title).includes(searchText);
+    if (!searchText) return true;
+    return formatText(description).includes(searchText) || formatText(title).includes(searchText);
 }
 
-function filterPriority(card, priority) {
-  if (!priority) return true;
-  return card.toLowerCase() === priority.toLowerCase();
+function filterPriority(cardPriority, filterValue) {
+    if (!filterValue) return true;
+    return cardPriority.toLowerCase() === filterValue.toLowerCase();
 }
 
-function filterStatus(card, status) {
-  if (!status) return true;
-  console.log(card.toLowerCase() === status.toLowerCase())
-  return card.toLowerCase() === status.toLowerCase();
+function filterStatus(cardStatus, filterValue) {
+    if (!filterValue) return true;
+    return cardStatus.toLowerCase() === filterValue.toLowerCase();
 }
 
 function filterCards() {
-  const searchText = formatText(searchInput.value);
-  const priority = priorityFilter.value;
-  const status = statusFilter.value;
+    const searchText = formatText(searchInput.value);
+    const priority = priorityFilter.value;
+    const status = statusFilter.value;
 
-  const filteredCards = cards.filter(card =>
-    filterSearch(card.title, card.description, searchText) &&
-    filterPriority(card.priority, priority) &&
-    filterStatus(card.status, status)
-  );
+    filteredCards = cards.filter(card =>
+        filterSearch(card.title, card.description, searchText) &&
+        filterPriority(card.priority, priority) &&
+        filterStatus(card.status, status)
+    );
 
     renderCards(filteredCards);
 }
 
 function handleAction(cardId, action) {
-    const card = filteredCards.find(card => card.id === cardId);
+    const card = cards.find(c => c.id === cardId);
+    if (!card) return;
 
     switch (action) {
         case "Finalizar":
-            alert(`Card "${card.title}" finalizado!`);
+        case "Iniciar":
+        case "Reabrir":
+            card.status = getNextStatus(card.status);
+            filterCards();
             break;
-        case 'Iniciar':
-            alert(`Card "${card.title}" Iniciado!`);
-            break;
-        case 'Reabrir':
-            alert(`Card "${card.title}" foi reaberto!`);
-            break;
-        case 'Ver Detalhes':
-            alert(`Testandoooooooooooooooo!`);
+        case "Ver Detalhes":
+            alert(`testandoooooooooo"`);
             break;
     }
 }
 
 function formatText(str) {
-  return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+    return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
 }
 
 renderCards(filteredCards);
