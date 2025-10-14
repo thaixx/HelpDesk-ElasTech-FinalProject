@@ -95,16 +95,17 @@
 
     <!-- Filtros -->
     <section class="filters">
-        <input type="text" class="filter-input" placeholder="Buscar card" />
-
-        <div class="dropdown">
-          <button class="dropbtn">Todos os Status</button>
-          <div class="dropdown-content">
-            <a href="#">Em andamento</a>
-            <a href="#">Pendente</a>
-            <a href="#">Concluído</a>
-          </div>
+        <div class="filter-input">
+          <i class="filter-icon" data-lucide="search"></i>
+          <input type="text" id="filterInput" placeholder="Buscar card">
         </div>
+
+        <select id="statusFilter" class="filter-select">
+          <option value="">Todos os Status</option>
+          <option value="em andamento">Em andamento</option>
+          <option value="pendente">Pendente</option>
+          <option value="concluido">Concluído</option>
+        </select>
 
          <!-- Botão que abre o calendário -->
         <button id="btnDataVencimento" class="calendar-btn"> Data de vencimento</button>
