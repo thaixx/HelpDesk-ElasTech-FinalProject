@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="/assets/global.css"/>
   <link rel="stylesheet" href="/assets/header-layout.css"/>
   <link rel="stylesheet" href="/assets/dashboard.css"/>
+  <script src="js/dashboard.js" defer></script>
 
   <!-- import icons: -->
   <script src="https://unpkg.com/lucide@latest"></script>
@@ -112,8 +113,10 @@
 
         <!-- Calendário (inicialmente oculto) -->
         <div id="calendarModal" class="calendar-modal">
-          <label for="monthSelect">Selecione o mês:</label>
-          <input type="month" id="monthSelect">
+          <label for="startDate">De:</label>
+          <input type="date" id="startDate">
+          <label for="endDate">Até:</label>
+          <input type="date" id="endDate">
           <button id="closeCalendar">OK</button>
         </div>
 
@@ -134,18 +137,6 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>
-              <strong>Login não está funcionando</strong>
-              <p>Usuário relata erro ao tentar fazer login no sistema...</p>
-            </td>
-            <td><span class="tag bug">Bug</span></td>
-            <td><span class="tag alta">Alta</span></td>
-            <td><span class="tag andamento">Em andamento</span></td>
-            <td>Larissa Faria</td>
-            <td>11/10/2025</td>
-            <td>15/10/2025</td>
-          </tr>
         </tbody>
       </table>
 
