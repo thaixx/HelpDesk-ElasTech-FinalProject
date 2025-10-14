@@ -1,6 +1,4 @@
-// === dashboard.js atualizado ===
 
-//===================================
 //dados mockados
 const cards = [
   { id: 1, title: "Login não está funcionando", description: "Usuário relata erro ao tentar fazer login no sistema e é redirecionado para a página inicial.", category: "Bug", priority: "Alta", status: "Em andamento", responsible: "Larissa Faria", created: "11/10/2025", dueDate: "15/10/2025" },
@@ -84,14 +82,17 @@ function filterCards() {
 
   renderTable(filtered);
 }
-
 function createTableRow(card) {
   return `
-    <tr>
+    <tr data-id="${card.id}">
       <td><strong>${card.title}</strong><p>${card.description.substring(0, 50)}...</p></td>
       <td><span class="tag ${getCategoryTag(card.category)}">${card.category}</span></td>
       <td><span class="tag ${getPriorityTag(card.priority)}">${card.priority}</span></td>
-      <td><span class="tag ${getStatusTag(card.status)}">${card.status}</span></td>
+      <td>
+        <span class="tag ${getStatusTag(card.status)} status-tag" data-status="${card.status}">
+          ${card.status}
+        </span>
+      </td>
       <td>${card.responsible}</td>
       <td>${card.created}</td>
       <td>${card.dueDate}</td>
@@ -101,10 +102,81 @@ function createTableRow(card) {
 function renderTable(data = cards) {
   if (data.length === 0) {
     tableBody.innerHTML = '<tr><td colspan="7">Nenhum card encontrado com os filtros aplicados.</td></tr>';
-  } else {
-    tableBody.innerHTML = data.map(createTableRow).join('');
+    return;
   }
+
+  // 1) Renderiza a tabela
+  tableBody.innerHTML = data.map(createTableRow).join('');
+
+  // 2) Torna cada linha clicável (abre detalhes)
+  const rows = document.querySelectorAll('.table-section tbody tr');
+  rows.forEach(row => {
+    // remove listeners duplicados (se houver) antes de adicionar
+    row.replaceWith(row.cloneNode(true));
+  });
+  // re-seleciona depois do clone
+  const freshRows = document.querySelectorAll('.table-section tbody tr');
+  freshRows.forEach(row => {
+    row.addEventListener('click', () => {
+      const id = row.dataset.id;
+      localStorage.setItem('cardsMock', JSON.stringify(cards));
+      window.location.href = `card-details.html?id=${id}`;
+    });
+  });
+
+  // 3) Adiciona evento de clique em cada status (depois de configurar as linhas)
+  const statusTags = document.querySelectorAll('.status-tag');
+  statusTags.forEach(tag => {
+    tag.addEventListener('click', (e) => {
+      // impede que o clique no status dispare o clique da linha
+      e.stopPropagation();
+
+      const currentTag = e.currentTarget;
+      const tr = currentTag.closest('tr');
+      const cardId = parseInt(tr.dataset.id, 10);
+      const currentStatus = currentTag.dataset.status;
+
+      // Cria o select de status
+      const select = document.createElement('select');
+      select.classList.add('status-select');
+      const options = ['Pendente', 'Em andamento', 'Concluído'];
+
+      options.forEach(opt => {
+        const option = document.createElement('option');
+        option.value = opt;
+        option.textContent = opt;
+        if (opt === currentStatus) option.selected = true;
+        select.appendChild(option);
+      });
+
+      // Substitui o span pelo select
+      currentTag.replaceWith(select);
+      select.focus();
+
+      // Evita que cliques dentro do select subam para a linha
+      select.addEventListener('click', (ev) => ev.stopPropagation());
+
+      // Ao mudar o valor, atualiza no mock (ou chame a API aqui)
+      select.addEventListener('change', () => {
+        const newStatus = select.value;
+        const cardIndex = cards.findIndex(c => c.id === cardId);
+        if (cardIndex !== -1) {
+          // atualiza no array local
+          cards[cardIndex].status = newStatus;
+
+          // por enquanto, só re-renderiza o front
+          renderTable();
+        }
+      });
+
+      // Se perder o foco sem mudar, volta ao original
+      select.addEventListener('blur', () => {
+        renderTable();
+      });
+    });
+  });
 }
+
 
 // EVENTOS DE FILTRO
 searchInput.addEventListener("input", filterCards);
@@ -145,3 +217,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   renderTable();
 });
+
+
+

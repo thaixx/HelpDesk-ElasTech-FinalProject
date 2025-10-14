@@ -3,6 +3,7 @@
     margin: 0 auto;
     padding: 40px 32px;
   }
+
   .dashboard-header {
     padding: 8px 16px;
     margin-bottom: 32px;
@@ -53,7 +54,6 @@
     transform: translateY(-1px);
   }
 
-
   /* CARDS DE RESUMO */
   .summary {
     display: flex;
@@ -82,7 +82,6 @@
     margin-bottom: 8px;
     margin-top: -12px;
   }
-
   /*numero nos cards*/
   .summary-card span {
     font-size: 26px;
@@ -120,7 +119,6 @@
     align-items: center;
     box-sizing: border-box;
   }
-  
   /* Input de busca */
   .filter-input {
     position: relative;
@@ -153,6 +151,7 @@
     color: #666;
     pointer-events: none;
   } 
+
   .filter-select {
     padding: 8px 16px;
     border: 1.5px solid #ddd;
@@ -162,12 +161,12 @@
     color: #333;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
     cursor: pointer;
- }
+  }
+
  .filter-select:hover {
   background-color: #f8f8f8;
   border-color: #ccc;
-}
-
+ }
   /* Botão principal dos filtros */
   .calendar-btn {
     background-color: #fff;
@@ -275,6 +274,19 @@
   .tag.bug { background: #ff4d4f; }
   .tag.alta { background: #ff7a45; }
   .tag.andamento { background: #69c0ff; }
+
+  .status-select {
+    font-size: 12px;
+    padding: 3px 6px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    outline: none;
+  }
+  
+  .status-select:focus {
+    border-color: #7b61ff;
+  }
+  
   
   /* ======== PAGINAÇÃO ======== */
   .pagination {
