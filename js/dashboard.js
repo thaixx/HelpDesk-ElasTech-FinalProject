@@ -20,7 +20,7 @@ const tableBody = document.querySelector(".table-section tbody");
 const statusFilter = document.getElementById('statusFilter');
 const searchInput = document.getElementById("filterInput");
 
-//calendario:
+//elemento do calendario:
 const btnDataVencimento = document.getElementById("btnDataVencimento");
 const calendarModal = document.getElementById("calendarModal");
 const closeCalendar = document.getElementById("closeCalendar");
@@ -30,6 +30,7 @@ function formatText(str) {
   return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
 }
 
+//pega as informações dos cards e adiciona nas tags, verificar se tá escrito igual ao que vem do BD::
 function getStatusTag(status) {
   switch(status.toLowerCase()) {
     case 'em andamento': return 'andamento';
@@ -64,6 +65,7 @@ function parseDate(dateString) {
   return new Date(parts[2], parts[1] - 1, parts[0]);
 }
 
+//filtra o card por data ou status
 function filterCards() {
   const searchText = formatText(searchInput.value);
   const status = statusFilter.value;
@@ -88,6 +90,7 @@ function filterCards() {
   renderTable(filtered);
 }
 
+//cria a tabela principal pegando as tags
 function createTableRow(card) {
   return `
     <tr data-id="${card.id}">
@@ -190,13 +193,11 @@ function renderTable(data = cards) {
   });
 }
 
-
-
 // EVENTOS DE FILTRO
 searchInput.addEventListener("input", filterCards);
 statusFilter.addEventListener("change", filterCards);
 
-// Lógica do modal de calendário
+// Lógicas do modal de calendário
 btnDataVencimento.addEventListener('click', (e) => {
   e.stopPropagation();
   calendarModal.style.display = calendarModal.style.display === 'block' ? 'none' : 'block';
@@ -225,6 +226,7 @@ document.addEventListener('click', (e) => {
   }
 });
 
+//icones lucide
 document.addEventListener('DOMContentLoaded', () => {
   if (typeof lucide !== 'undefined' && lucide.createIcons) {
     lucide.createIcons();
