@@ -4,9 +4,9 @@ const cards = [
   { id: 1, title: "Login não está funcionando", description: "Usuário relata erro ao tentar fazer login no sistema e é redirecionado para a página inicial.", category: "Bug", priority: "Alta", status: "Em andamento", responsible: "Larissa Faria", created: "11/10/2025", dueDate: "15/10/2025" },
   { id: 2, title: "Implementar Dark Mode", description: "Criar uma opção para que o usuário possa alternar para o tema escuro no dashboard.", category: "Melhoria", priority: "Média", status: "Pendente", responsible: "Gabriel Costa", created: "05/10/2025", dueDate: "20/10/2025" },
   { id: 3, title: "Erro 404 ao acessar relatórios", description: "Ao clicar no link 'Relatórios Mensais', o sistema retorna um erro 404 (página não encontrada).", category: "Bug", priority: "Alta", status: "Concluído", responsible: "Fernanda Tisco", created: "01/10/2025", dueDate: "05/10/2025" },
-  { id: 4, title: "Atualizar biblioteca de gráficos", description: "Substituir a atual biblioteca de gráficos por uma mais moderna e responsiva (ex: Chart.js).", category: "Manutenção", priority: "Baixa", status: "Em andamento", responsible: "Larissa Faria", created: "25/09/2025", dueDate: "30/11/2025" },
-  { id: 5, title: "Configurar integrações com Slack", description: "Permitir que notificações de novos cards sejam enviadas automaticamente para um canal do Slack.", category: "Integração", priority: "Média", status: "Pendente", responsible: "Gabriel Costa", created: "12/10/2025", dueDate: "18/10/2025" },
-  { id: 6, title: "Documentação de API", description: "Revisar e atualizar a documentação da API para os endpoints de usuário e cards.", category: "Documentação", priority: "Baixa", status: "Concluído", responsible: "Larissa Faria", created: "08/10/2025", dueDate: "10/10/2025" },
+  { id: 4, title: "Atualizar biblioteca de gráficos", description: "Substituir a atual biblioteca de gráficos por uma mais moderna e responsiva (ex: Chart.js).", category: "Duvida", priority: "Baixa", status: "Em andamento", responsible: "Larissa Faria", created: "25/09/2025", dueDate: "30/11/2025" },
+  { id: 5, title: "Configurar integrações com Slack", description: "Permitir que notificações de novos cards sejam enviadas automaticamente para um canal do Slack.", category: "Duvida", priority: "Média", status: "Pendente", responsible: "Gabriel Costa", created: "12/10/2025", dueDate: "18/10/2025" },
+  { id: 6, title: "Documentação de API", description: "Revisar e atualizar a documentação da API para os endpoints de usuário e cards.", category: "Suporte", priority: "Baixa", status: "Concluído", responsible: "Larissa Faria", created: "08/10/2025", dueDate: "10/10/2025" },
   { id: 7, title: "Otimização de performance no load inicial", description: "Identificar gargalos e otimizar o carregamento de recursos na página principal.", category: "Melhoria", priority: "Alta", status: "Em andamento", responsible: "Fernanda Tisco", created: "09/10/2025", dueDate: "25/10/2025" },
 ];
 
@@ -30,27 +30,32 @@ function formatText(str) {
   return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
 }
 
+function getStatusTag(status) {
+  switch(status.toLowerCase()) {
+    case 'em andamento': return 'andamento';
+    case 'concluído': return 'concluido';
+    case 'pendente': return 'pendente';
+    default: return '';
+  }
+}
+
 function getCategoryTag(category) {
-  const map = {
-    'bug': 'bug',
-    'melhoria': 'alta',
-    'manutenção': 'andamento',
-    'integração': 'alta',
-    'documentação': 'andamento',
-  };
-  const key = formatText(category);
-  return map[key] || ''; 
+  switch(category.toLowerCase()) {
+    case 'bug': return 'bug';
+    case 'melhoria': return 'melhoria';
+    case 'suporte': return 'suporte';
+    case 'duvida': return 'duvida';
+    default: return '';
+  }
 }
 
 function getPriorityTag(priority) {
-  return formatText(priority) === 'alta' ? 'alta' : 'andamento';
-}
-
-function getStatusTag(status) {
-  const key = formatText(status);
-  if (key.includes('andamento')) return 'andamento';
-  if (key.includes('pendente')) return 'alta';
-  if (key.includes('concluido')) return 'andamento';
+  switch(priority.toLowerCase()) {
+    case 'alta': return 'alta';
+    case 'média': return 'média';
+    case 'baixa': return 'baixa';
+    default: return '';
+  }
 }
 
 function parseDate(dateString) {
@@ -82,6 +87,7 @@ function filterCards() {
 
   renderTable(filtered);
 }
+
 function createTableRow(card) {
   return `
     <tr data-id="${card.id}">
@@ -89,9 +95,16 @@ function createTableRow(card) {
       <td><span class="tag ${getCategoryTag(card.category)}">${card.category}</span></td>
       <td><span class="tag ${getPriorityTag(card.priority)}">${card.priority}</span></td>
       <td>
-        <span class="tag ${getStatusTag(card.status)} status-tag" data-status="${card.status}">
-          ${card.status}
-        </span>
+        <div class="status-wrapper">
+          <span class="tag ${getStatusTag(card.status)} status-tag" data-status="${card.status}">
+            ${card.status} <span class="status-arrow">▾</span>
+          </span>
+          <select class="status-select" style="display:none;">
+            <option value="andamento" ${card.status === 'andamento' ? 'selected' : ''}>Em andamento</option>
+            <option value="pendente" ${card.status === 'pendente' ? 'selected' : ''}>Pendente</option>
+            <option value="concluido" ${card.status === 'concluído' ? 'selected' : ''}>Concluído</option>
+          </select>
+        </div>
       </td>
       <td>${card.responsible}</td>
       <td>${card.created}</td>
@@ -178,6 +191,7 @@ function renderTable(data = cards) {
 }
 
 
+
 // EVENTOS DE FILTRO
 searchInput.addEventListener("input", filterCards);
 statusFilter.addEventListener("change", filterCards);
@@ -217,6 +231,37 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   renderTable();
 });
+
+//eventos de status na tabela :
+document.addEventListener('click', function(e) {
+  // Se clicar em uma tag de status
+  if (e.target.closest('.status-tag')) {
+    const wrapper = e.target.closest('.status-wrapper');
+    const select = wrapper.querySelector('.status-select');
+    
+    // Alterna a exibição do select
+    select.style.display = select.style.display === 'none' ? 'inline-block' : 'none';
+    wrapper.querySelector('.status-tag').classList.toggle('open');
+  }
+});
+
+// Ao alterar o select, atualiza o status
+document.addEventListener('change', function(e) {
+  if (e.target.classList.contains('status-select')) {
+    const select = e.target;
+    const wrapper = select.closest('.status-wrapper');
+    const tag = wrapper.querySelector('.status-tag');
+    
+    const value = select.value;
+    tag.textContent = select.options[select.selectedIndex].text + ' ▾';
+    
+    // Atualiza cor dinamicamente
+    tag.className = 'tag ' + value + ' status-tag';
+    select.style.display = 'none';
+    tag.classList.remove('open');
+  }
+});
+
 
 
 

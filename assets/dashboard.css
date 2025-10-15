@@ -159,7 +159,6 @@
     font-size: 14px;
     background-color: #fff;
     color: #333;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
     cursor: pointer;
   }
 
@@ -175,10 +174,7 @@
     padding: 8px 16px;
     font-size: 14px;
     color: #333;
-    text-align: left;
     cursor: pointer;
-    display: flex;
-    align-items: center;
 
   }
 
@@ -262,31 +258,77 @@
   }
   
   /* Tags */
-  .tag {
-    padding: 4px 10px;
-    border-radius: 10px;
-    font-size: 12px;
-    font-weight: 500;
-    color: white;
-    display: inline-block;
-  }
-  
-  .tag.bug { background: #ff4d4f; }
-  .tag.alta { background: #ff7a45; }
-  .tag.andamento { background: #69c0ff; }
+ 
+.tag {
+  padding: 4px 10px;
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: 500;
+  color: white;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  cursor: default;
+  transition: background 0.2s ease, transform 0.1s ease;
+}
 
-  .status-select {
-    font-size: 12px;
-    padding: 3px 6px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-    outline: none;
-  }
-  
-  .status-select:focus {
-    border-color: #7b61ff;
-  }
-  
+/* Ícone de seta indicando interação */
+.status-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: 500;
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+
+.status-tag:hover {
+  transform: scale(1.03);
+}
+
+.status-arrow {
+  font-size: 10px;
+  opacity: 0.7;
+}
+
+.status-tag.open .status-arrow {
+  transform: rotate(180deg);
+}
+
+/* ===== CORES DE TAGS ===== */
+
+/* ===== STATUS ===== */
+.tag.andamento { background-color: #CEFAFE ; color:#49AED6 ; }
+.tag.concluido { background-color: #DCFCE7; color: #0BA946; }
+.tag.pendente { background-color: #FEF9C2; color: #996A3B; }
+
+/* ===== CATEGORIA ===== */
+.tag.bug { background-color:#FFDFDF ; color:#D23832; }
+.tag.melhoria { background-color: #CEFAFE ; color:#49AED6 ; }
+.tag.suporte { background-color: #DCFCE7; color: #0BA946; }
+.tag.duvida { background-color:#F6EDFF ; color: #A236E7; }
+
+/* ===== PRIORIDADE ===== */
+.tag.alta { background-color:#FFDFDF ; color:#D23832; }
+.tag.média { background-color: #FEF9C2; color: #996A3B; }
+.tag.baixa { background-color: #DCFCE7; color: #0BA946; }
+
+
+/* Select do status (quando abre pra editar) */
+.status-select {
+  font-size: 12px;
+  padding: 3px 6px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  outline: none;
+}
+
+.status-select:focus {
+  border-color: #7b61ff;
+}
+
   
   /* ======== PAGINAÇÃO ======== */
   .pagination {
